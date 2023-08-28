@@ -40,7 +40,6 @@
     "@typescript-eslint/no-unused-vars": "warn",
     "simple-import-sort/exports": "error",
     "sonarjs/no-duplicate-string": "off",
-    "prettier/prettier": "error",
     "simple-import-sort/imports": [
       "error",
       {
