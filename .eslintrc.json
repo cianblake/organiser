@@ -1,0 +1,94 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:react-hooks/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": false
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react-hooks", "@typescript-eslint", "prettier", "simple-import-sort"],
+  "rules": {
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "camelcase": "off",
+    "spaced-comment": "error",
+    "quotes": ["error", "single"],
+    "no-duplicate-imports": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "simple-import-sort/exports": "error",
+    "sonarjs/no-duplicate-string": "off",
+    "prettier/prettier": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            // Packages `react` related packages come first.
+            "^react",
+            "^@?\\w",
+            // Internal packages.
+            "^(@|components)(/.*|$)",
+            "^(@|api)(/.*|$)",
+            "^pages",
+            "^Layouts",
+            // Store.
+            "^store",
+            // Parent imports. Put `..` last.
+            // Utils.
+            "^utils",
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            // Other relative imports. Put same-folder imports and `.` last.
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$",
+            // Icons imports.
+            "^assets",
+            // Style imports.
+            "^.+\\.?(styled)$",
+            "^themes",
+            //types
+            "^.+\\.?(types)$"
+          ]
+        ]
+      }
+    ]
+  },
+	"overrides": [
+		{
+			"files": ["types.ts", "index.d.ts"],
+			"rules": {
+				"no-unused-vars": "off"
+			}
+		},
+		{
+			"files": ["index.d.ts"],
+			"rules": {
+				"@typescript-eslint/no-explicit-any": "off"
+			}
+		}
+	]
+}
